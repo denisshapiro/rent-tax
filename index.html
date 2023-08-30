@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body class="container" style="margin-top: 50px;">
+
+    <h3 class="center-align">Налоговый калькулятор для квартир</h3>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input type="number" id="taxFreeAmount">
+            <label for="taxFreeAmount">Введите сумму не облагаемую налогом</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input type="number" id="rent1">
+            <label for="rent1">Введите сумму полученную с квартиры 1</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input type="number" id="rent2">
+            <label for="rent2">Введите сумму полученную с квартиры 2</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input type="number" id="rent3">
+            <label for="rent3">Введите сумму полученную с квартиры 3</label>
+        </div>
+
+        <div class="col s12">
+            <button class="btn waves-effect waves-light" onclick="calculateOptimalTax()">Рассчитать</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content" id="results"></div>
+    </div>
+
+    <!-- Materialize JS and jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
