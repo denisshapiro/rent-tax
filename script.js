@@ -8,6 +8,19 @@ function calculate_tax_for_apartment(rent, tax_free_amount) {
     return [tax_31_percent, Math.min(rent, tax_free_amount)];
 }
 
+function print_allocation(apartment_number, rent, tax_free_allocation) {
+    let result = "--------------------------------------------------------<br>";
+
+    if (tax_free_allocation === 0) {
+        result += `Оплатить налог 10% за квартиру ${apartment_number} = ₪${(rent * 0.1).toFixed(2)}<br>`;
+    } else {
+        result += `Kвартирa ${apartment_number} использует ₪${tax_free_allocation} от суммы не облагаемой налогом<br>`;
+        result += `Платите 31% за Kвартиру ${apartment_number} = ₪${((rent - tax_free_allocation) * 0.31).toFixed(2)}<br>`;
+    }
+
+    return result;
+}
+
 function calculateOptimalTax() {
     const taxFreeAmountInput = parseFloat(document.getElementById("taxFreeAmount").value);
     const rent1 = parseFloat(document.getElementById("rent1").value);
@@ -48,7 +61,7 @@ function calculateOptimalTax() {
     resultsDiv.innerHTML += `Cумма не облагаемая налогом: ₪${tax_free_amount}<br>`;
     resultsDiv.innerHTML += `Оптимальный налог составляет: ₪${min_tax.toFixed(2)}<br>`;
     resultsDiv.innerHTML += `Оптимальное распределение суммы не облагаемой налогом:<br>`;
-    resultsDiv.innerHTML += `Kвартирa 1: ₪${best_dist[0]}<br>`;
-    resultsDiv.innerHTML += `Kвартирa 2: ₪${best_dist[1]}<br>`;
-    resultsDiv.innerHTML += `Kвартирa 3: ₪${best_dist[2]}<br>`;
+    resultsDiv.innerHTML += print_allocation(1, rent1, best_dist[0]);
+    resultsDiv.innerHTML += print_allocation(2, rent2, best_dist[1]);
+    resultsDiv.innerHTML += print_allocation(3, rent3, best_dist[2]);
 }
